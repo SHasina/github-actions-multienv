@@ -1,0 +1,30 @@
+name: sample-workflow
+on:
+	workflow_dispatch:
+jobs:
+	DEV:
+		runs-on: ubuntu-latest
+		environment: DEV
+		steps:
+		-uses: checkout/action@v2
+		 name: Run a script
+		 run:
+			echo "This is my DEV Environment"
+	QA:
+		runs-on: ubuntu-latest
+		environment: QA
+		needs: DEV
+		steps:
+		-uses: checkout/action@v2
+		 name: Run a script
+		 run:
+			echo "This is my QA Environment"
+	PROD:
+		runs-on: ubuntu-latest
+		environment: PROD
+		needs: QA
+		steps:
+		-uses: checkout/action@v2
+		 name: Run a script
+		 run: 
+			echo "This is my PROD Environment"
