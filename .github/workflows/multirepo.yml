@@ -20,6 +20,8 @@ jobs:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
     environment: DEV
+    env:
+      var1 : python
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -28,13 +30,16 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
-        run:
+        run: |
           echo "Hello, world from $GITHUB_ENV!"
+          echo "This is a $var1 sample"
   QA:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
     environment: QA
     needs: DEV
+    env:
+      var2 : NodeJS
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
@@ -42,8 +47,9 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
-        run: 
-          echo "Hello, world from $GITHUB_ENV!"	
+        run: |
+          echo "Hello, world from $GITHUB_ENV!"
+          echo "This is $var2 sample"
   PROD:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
