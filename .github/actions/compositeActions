@@ -6,4 +6,4 @@ runs:
   using: "composite"                # <- Required declaration of a composite action.
   steps:
     - run: Write-Host "Hello World from Composite Action!"
-      shell: pwsh
+      name: composite action
