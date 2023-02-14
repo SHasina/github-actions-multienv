@@ -34,6 +34,12 @@ jobs:
           echo "Hello, world from $GITHUB_ENV!"
           echo "This is a $var1 sample"
           
+  DEV-composite:
+  
+    name: Running a composite workflow
+    runs-on: windows latest
+    steps:
+    
       - uses: actions/checkout@v2
       
       - name: Hello-world composite action
